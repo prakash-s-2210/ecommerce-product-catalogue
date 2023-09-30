@@ -6,7 +6,7 @@ import { useState } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState(data.products);
+  const [products, setProducts] = useState(data.products.sort((a, b) => a.price - b.price));
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   // Brands Filter section information
@@ -41,7 +41,7 @@ function App() {
     } else if (filterData.price === 'highToLow') {
       filteredProducts.sort((a, b) => b.price - a.price);
     }
-    setProducts(filteredProducts)
+    setProducts([...filteredProducts])
   }
 
   // Add to and remove from the cart function 
